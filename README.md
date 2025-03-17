@@ -1,36 +1,151 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Questionnaire App (Next.js + TypeScript + Redux)
 
-## Getting Started
+This project implements a dynamic questionnaire application built with Next.js, TypeScript, and Redux. Questions and logic flows are entirely configurable via JSON.
 
-First, run the development server:
+## 📦 Tech Stack
+
+- **Next.js 14** (App Router)
+- **TypeScript**
+- **Redux Toolkit** (for state management)
+- **Tailwind CSS**
+- **ESLint & Prettier** (code quality & formatting)
+
+## 🚀 Features
+
+- Fully dynamic questionnaire generation from JSON configuration.
+- Conditional question flows based on user answers.
+- Responsive UI optimized for mobile and desktop.
+- Answers are stored using Redux.
+- Dynamic placeholders based on previous answers.
+
+## 🗂️ Project Structure
+
+```bash
+app/
+├── page.tsx                 # Homepage
+├── layout.tsx               # App layout (Redux provider etc.)
+├── surveys/
+│   └── [surveyId]/
+│       ├── question/
+│       │   └── [id]/
+│       │       └── page.tsx  # Dynamic question pages
+│       └── summary/
+│           └── page.tsx     # Summary page
+components/
+├── Button/
+│   └── index.tsx            # Reusable button component
+├── Header/
+│   └── index.tsx            # Common header component
+├── Providers/
+│   └── index.tsx            # Redux providers
+├── Question/
+│   └── index.tsx            # Question component
+constants/
+├── enum.ts                  # Enum constants
+├── routes.ts                # Route paths constants
+data/
+└── surveys/
+    └── relationshipSurvey.json # Questionnaire configuration
+public/
+├── BackArrow.svg            # Assets/icons
+└── Logo.svg                 # Assets/icons
+store/
+├── store.ts                 # Redux store configuration
+└── questionnaireSlice.ts    # Redux slice for questionnaire answers
+types/
+├── button.d.ts              # Button component types
+├── header.d.ts              # Header component types
+├── store.d.ts               # Store-related types
+└── survey.d.ts              # Survey/questionnaire types
+utils/
+├── helpers/
+│   └── getSurveyQuestions.ts     # Get survey questions helper
+└── formatters/
+    └── replacePlaceholders.ts    # Replace dynamic placeholders
+
+
+```
+
+## 🚀 Installation
+
+Clone the repository:
+
+```bash
+git clone <repository_url>
+cd project-name
+npm install
+```
+
+## ⚙️ Commands
+
+### Development
+
+Run development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Production
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Build and run the production version:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build && npm start
+```
 
-## Learn More
+## 🛠️ Configuration
 
-To learn more about Next.js, take a look at the following resources:
+Questionnaires are configured via JSON files located in:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+src/data/surveys
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+JSON Structure example:
 
-## Deploy on Vercel
+```json
+{
+  "survey-name": [
+    {
+      "id": "1",
+      "question": "Your question?",
+      "screenType": "single-choice",
+      "options": ["Option1", "Option2"],
+      "next": "2",
+      "placeholderKey": "example"
+    }
+]
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ✅ ESLint & Prettier
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Run lint checks:
+
+```bash
+npm run lint
+```
+
+Format code:
+
+```bash
+npm run format
+```
+
+## 🚀 Deployment
+
+You can deploy the app easily using [Vercel](https://vercel.com/):
+
+- Create a new project at [Vercel](https://vercel.com).
+- Connect your repository.
+- Deploy your app.
+
+---
+
+## Author
+
+**Ivan Prots** — [ivanprotss@gmail.com](mailto:ivanprotss@gmail.com)
+
+---
+
+Feel free to contribute or report issues via GitHub issues.

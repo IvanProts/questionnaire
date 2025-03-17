@@ -4,7 +4,7 @@ This project implements a dynamic questionnaire application built with Next.js, 
 
 ## 📦 Tech Stack
 
-- **Next.js 14** (App Router)
+- **Next.js 15** (App Router)
 - **TypeScript**
 - **Redux Toolkit** (for state management)
 - **Tailwind CSS**
